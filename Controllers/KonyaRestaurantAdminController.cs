@@ -4,24 +4,86 @@ using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 using KonyaRestaurantAPI.Models;
 using Microsoft.AspNetCore.Hosting;
+
 using Microsoft.AspNetCore.Http;
 using System.IO;
 
-namespace KonyaRestaurantAPI.Controllers{
 
-    [ApiController]
-    [Route("[controller]")]
-    public class KonyaRestauranAdminController : ControllerBase{
+// nytt bibliotek for search
+using System.Linq;
 
-        private readonly KonyaRestaurantContext _context;
-        private readonly IWebHostEnvironment _hosting;
 
-        public KonyaRestauranAdminController(KonyaRestaurantContext context, IWebHostEnvironment hosting){
-            _context = context;
-            _hosting = hosting;
+namespace KonyaRestaurantAPI.Controllers {
+
+       [ApiController]
+       [Route("[controller]")]
+        public class KonyaRestaurantAdminController : ControllerBase {
+    
+           private readonly KonyaRestaurantContext _context;
+           private readonly IWebHostEnvironment _hosting;
+           public KonyaRestaurantAdminController(KonyaRestaurantContext context, IWebHostEnvironment hosting) {
+                 _context = context;
+                 _hosting = hosting;    
+           }
+
+
+
+        [HttpGet]
+        public async Task<IEnumerable<Matrett>> Get(){
+            List<Matrett> matrettList = await _context.Matrett.ToListAsync();
+            return matrettList;
         }
 
-        [HttpPost]
+    
+        [HttpGet("{id}")]
+         [Route("[action]/{id}")]
+        public async Task<Matrett> GetId(int id){
+            Matrett chosenMatrett = await _context.Matrett.FirstOrDefaultAsync( matrett => matrett.Id == id );
+            return chosenMatrett;
+        }
+     
+         
+         [HttpGet("{name}")]
+         [Route("[action]/{name}")]
+        public async Task<IEnumerable<Matrett>> GetDishesAfterName(string name){
+            List<Matrett> matrettList = await _context.Matrett
+                .Where( 
+                    matrett =>  matrett.Name.ToLower()
+                    .Contains(name.ToLower()) 
+                )
+                .ToListAsync();
+
+            return matrettList;
+        } 
+        
+        
+
+         [HttpPost]
+        public async Task<Matrett> Post(Matrett newMatrett){
+            _context.Matrett.Add(newMatrett);
+            await _context.SaveChangesAsync();
+            return newMatrett;
+        }
+
+
+        [HttpPut]
+        public async Task<Matrett> Put(Matrett changeMatrett){
+            _context.Update(changeMatrett);
+            await _context.SaveChangesAsync();
+            return changeMatrett;
+        }
+       
+         [HttpDelete("{id}")]
+        public async Task<Matrett> Delete(int id){
+            Matrett matrettToDelete = await _context.Matrett.FirstAsync( matrett => matrett.Id == id );
+            _context.Matrett.Remove( matrettToDelete );
+            await _context.SaveChangesAsync();
+            return matrettToDelete;
+        }
+
+
+
+         [HttpPost]
         [Route("[action]")]
         public void UploadImage(IFormFile file){
             string webRootPath = _hosting.WebRootPath;
@@ -31,6 +93,9 @@ namespace KonyaRestaurantAPI.Controllers{
             }
         }
 
+           
     }
 
-}
+ }
+
+
