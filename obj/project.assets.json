@@ -1145,23 +1145,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\hamza\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\fazal\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\hamza\\Desktop\\KonyaRestaurantAPI\\KonyaRestaurantAPI.csproj",
+      "projectUniqueName": "C:\\Users\\fazal\\Desktop\\ny\\KonyaRestaurantAPI\\KonyaRestaurantAPI.csproj",
       "projectName": "KonyaRestaurantAPI",
-      "projectPath": "C:\\Users\\hamza\\Desktop\\KonyaRestaurantAPI\\KonyaRestaurantAPI.csproj",
-      "packagesPath": "C:\\Users\\hamza\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\hamza\\Desktop\\KonyaRestaurantAPI\\obj\\",
+      "projectPath": "C:\\Users\\fazal\\Desktop\\ny\\KonyaRestaurantAPI\\KonyaRestaurantAPI.csproj",
+      "packagesPath": "C:\\Users\\fazal\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\fazal\\Desktop\\ny\\KonyaRestaurantAPI\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\hamza\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\fazal\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
@@ -1212,7 +1208,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files (x86)\\dotnet\\sdk\\3.1.200\\RuntimeIdentifierGraph.json"
       }
     }
   }
