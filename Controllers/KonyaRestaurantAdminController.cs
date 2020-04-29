@@ -26,7 +26,23 @@ namespace KonyaRestaurantAPI.Controllers {
                  _hosting = hosting;    
            }
 
-
+           // for dessert
+  
+         [HttpGet]
+         [Route("[action]")]
+        public async Task<IEnumerable<Drikke>> GetDrikke(){
+            List<Drikke> drikkeList = await _context.Drikke.ToListAsync();
+            return drikkeList;
+        }
+    
+      
+            //Http get for dessert tabell
+        [HttpGet]
+        [Route("[action]")]
+        public async Task<IEnumerable<Dessert>> GetDessert(){
+            List<Dessert> dessertList = await _context.Dessert.ToListAsync();
+            return dessertList;
+        }
 
         [HttpGet]
         public async Task<IEnumerable<Matrett>> Get(){

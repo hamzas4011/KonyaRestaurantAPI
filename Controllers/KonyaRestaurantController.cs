@@ -13,8 +13,6 @@ using System.IO;
 */
 
 
-
-
 namespace KonyaRestaurantAPI.Controllers{
 
     [ApiController]
@@ -28,14 +26,32 @@ namespace KonyaRestaurantAPI.Controllers{
             _context = context;
             _hosting = hosting;
         }
- 
 
-      [HttpGet]
+       //Httpget for default, altså for matrett
+
+         [HttpGet]
         public async Task<IEnumerable<Matrett>> Get(){
             List<Matrett> matrettList = await _context.Matrett.ToListAsync();
             return matrettList;
         }
 
+ 
+       //Http get for drikke tabell
+        [HttpGet]
+        [Route("[action]")]
+        public async Task<IEnumerable<Drikke>> GetDrikke(){
+            List<Drikke> drikkeList = await _context.Drikke.ToListAsync();
+            return drikkeList;
+        }
+        
+         //Http get for dessert tabell
+        [HttpGet]
+        [Route("[action]")]
+        public async Task<IEnumerable<Dessert>> GetDessert(){
+            List<Dessert> dessertList = await _context.Dessert.ToListAsync();
+            return dessertList;
+        }
+      
         
     }
 }
