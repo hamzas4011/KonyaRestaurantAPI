@@ -26,7 +26,13 @@ namespace KonyaRestaurantAPI.Controllers {
                  _hosting = hosting;    
            }
 
-           // for dessert
+
+           /*
+           Http get metode for drikke tabell.
+           Her måtte jeg bruke route action siden man kan ikke ha flere enn
+           en default http get metode.
+
+           */
   
          [HttpGet]
          [Route("[action]")]
@@ -36,7 +42,7 @@ namespace KonyaRestaurantAPI.Controllers {
         }
     
       
-            //Http get for dessert tabell
+            //Http get metode for dessert tabell
         [HttpGet]
         [Route("[action]")]
         public async Task<IEnumerable<Dessert>> GetDessert(){
@@ -44,12 +50,15 @@ namespace KonyaRestaurantAPI.Controllers {
             return dessertList;
         }
 
+        // Http get metode for matrett tabellen, altså default get.
+
         [HttpGet]
         public async Task<IEnumerable<Matrett>> Get(){
             List<Matrett> matrettList = await _context.Matrett.ToListAsync();
             return matrettList;
         }
-
+    
+         // henter id, for når man skal endre en matrett
     
         [HttpGet("{id}")]
          [Route("[action]/{id}")]
@@ -57,8 +66,9 @@ namespace KonyaRestaurantAPI.Controllers {
             Matrett chosenMatrett = await _context.Matrett.FirstOrDefaultAsync( matrett => matrett.Id == id );
             return chosenMatrett;
         }
-     
-         
+       
+        // Samme greie som med get, bare at man søker etter navn
+
          [HttpGet("{name}")]
          [Route("[action]/{name}")]
         public async Task<IEnumerable<Matrett>> GetDishesAfterName(string name){
@@ -73,7 +83,7 @@ namespace KonyaRestaurantAPI.Controllers {
         } 
         
         
-
+        // Http post metode for å legge til ny matrett
          [HttpPost]
         public async Task<Matrett> Post(Matrett newMatrett){
             _context.Matrett.Add(newMatrett);
@@ -81,7 +91,7 @@ namespace KonyaRestaurantAPI.Controllers {
             return newMatrett;
         }
 
-
+        //Http metode for å endre matrett
         [HttpPut]
         public async Task<Matrett> Put(Matrett changeMatrett){
             _context.Update(changeMatrett);
@@ -89,6 +99,7 @@ namespace KonyaRestaurantAPI.Controllers {
             return changeMatrett;
         }
        
+       // http metode for å slette matrett
          [HttpDelete("{id}")]
         public async Task<Matrett> Delete(int id){
             Matrett matrettToDelete = await _context.Matrett.FirstAsync( matrett => matrett.Id == id );
@@ -98,7 +109,7 @@ namespace KonyaRestaurantAPI.Controllers {
         }
 
 
-
+       //for å legge til bilde av en ny matrett
          [HttpPost]
         [Route("[action]")]
         public void UploadImage(IFormFile file){

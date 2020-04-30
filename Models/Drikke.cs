@@ -1,6 +1,7 @@
 
 using System.ComponentModel.DataAnnotations;
 
+// models klasse for tabell
 namespace KonyaRestaurantAPI.Models {
 
       public class Drikke {

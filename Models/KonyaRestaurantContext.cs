@@ -1,6 +1,8 @@
 
 using Microsoft.EntityFrameworkCore;
 
+// her henter jeg alle models klassene(tabellene)
+
 namespace KonyaRestaurantAPI.Models {
     public class KonyaRestaurantContext : DbContext { 
         

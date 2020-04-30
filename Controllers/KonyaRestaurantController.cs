@@ -6,13 +6,6 @@ using KonyaRestaurantAPI.Models;
 using Microsoft.AspNetCore.Hosting;
 
 
-// kanskje det ikke trengs de to usingene her, men vi venter med å ta vekk
-/*
-using Microsoft.AspNetCore.Http;
-using System.IO;
-*/
-
-
 namespace KonyaRestaurantAPI.Controllers{
 
     [ApiController]
